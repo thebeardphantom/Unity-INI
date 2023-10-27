@@ -19,5 +19,20 @@
         }
 
         #endregion
+
+        #region Methods
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return ToString(IniQualifiedKey.KEY_SECTION_DEFAULT_SEPARATOR);
+        }
+
+        public string ToString(string separator)
+        {
+            return QualifiedKey.ToString(separator);
+        }
+
+        #endregion
     }
 }

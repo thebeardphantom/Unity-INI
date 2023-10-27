@@ -6,6 +6,12 @@ namespace BeardPhantom.UnityINI
     [Serializable]
     public struct IniQualifiedKey
     {
+        #region Fields
+
+        public const string KEY_SECTION_DEFAULT_SEPARATOR = "/";
+
+        #endregion
+
         #region Properties
 
         [field: SerializeField]
@@ -29,12 +35,12 @@ namespace BeardPhantom.UnityINI
         #region Methods
 
         /// <inheritdoc />
-        public override string ToString()
+        public readonly override string ToString()
         {
-            return ToString("/");
+            return ToString(KEY_SECTION_DEFAULT_SEPARATOR);
         }
 
-        public string ToString(string separator)
+        public readonly string ToString(string separator)
         {
             return string.IsNullOrWhiteSpace(Section) ? Key : $"{Section}{separator}{Key}";
         }
