@@ -1,8 +1,10 @@
-﻿public interface IIniEditorAsset
+﻿#if UNITY_EDITOR
+public interface IIniEditorAsset
 {
     #region Methods
 
-    void RegenerateData();
+    void RegenerateDataInEditor();
 
     #endregion
 }
+#endif

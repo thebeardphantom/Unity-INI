@@ -1,4 +1,5 @@
-﻿using IniParser.Model.Configuration;
+﻿#if UNITY_EDITOR
+using IniParser.Model.Configuration;
 using System.IO;
 using UnityEditor;
 using UnityEditor.AssetImporters;
@@ -67,3 +68,4 @@ namespace BeardPhantom.UnityINI.Editor
         #endregion
     }
 }
+#endif

@@ -11,6 +11,8 @@ namespace BeardPhantom.UnityINI
     {
         #region Properties
 
+        public static IniSerializedData Default => new(new IniData());
+
         [field: SerializeField]
         public IniSection Global { get; private set; }
 

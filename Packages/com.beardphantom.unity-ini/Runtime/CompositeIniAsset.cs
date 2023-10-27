@@ -1,14 +1,12 @@
-﻿using IniParser.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityINI
 {
     [CreateAssetMenu(menuName = "INI/Composite INI")]
-    public class CompositeIniAsset : IniAssetBase
+    public partial class CompositeIniAsset : IniAssetBase
     {
         #region Types
 
@@ -42,9 +40,6 @@ namespace BeardPhantom.UnityINI
         [field: SerializeField]
         public List<Layer> Layers { get; private set; } = new();
 
-        [field: SerializeField]
-        public override IniSerializedData Data { get; protected set; }
-
         #endregion
 
         #region Methods
@@ -59,32 +54,13 @@ namespace BeardPhantom.UnityINI
                         Asset = i,
                         Enabled = true
                     }));
-            compositeIniAsset.RegenerateData();
+            compositeIniAsset.RegenerateDataInEditor();
             return compositeIniAsset;
-        }
-
-        [ContextMenu("Regenerate INI Data")]
-        public void RegenerateData()
-        {
-            using var _ = ListPool<Layer>.Get(out var valid);
-            valid.AddRange(Layers.Where(Layer.IsValidAndEnabled));
-            if (valid.Count == 0)
-            {
-                return;
-            }
-
-            var parsedData = new IniData(valid[0].Asset.IniParsedData);
-            for (var i = 1; i < valid.Count; i++)
-            {
-                parsedData.Merge(valid[i].Asset.IniParsedData);
-            }
-
-            Data = new IniSerializedData(parsedData);
         }
 
         private void OnValidate()
         {
-            RegenerateData();
+            RegenerateDataInEditor();
         }
 
         #endregion
