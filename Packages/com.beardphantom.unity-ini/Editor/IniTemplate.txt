@@ -1,0 +1,6 @@
+﻿; Comments use semicolons
+DemoKey = DemoValue
+
+; Categories
+[Demo Category]
+DemoKey = 123 

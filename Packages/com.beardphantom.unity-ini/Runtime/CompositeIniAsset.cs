@@ -6,13 +6,13 @@ using UnityEngine.Pool;
 
 namespace BeardPhantom.UnityINI
 {
-    [CreateAssetMenu(menuName = nameof(MultiIniAsset))]
-    public class MultiIniAsset : ScriptableObject, IIniAsset
+    [CreateAssetMenu(menuName = "INI/Composite INI")]
+    public class CompositeIniAsset : ScriptableObject, IIniAsset
     {
         #region Properties
 
         [field: SerializeField]
-        private List<IniAsset> IniAssets { get; set; } = new();
+        public List<IniAsset> IniAssets { get; private set; } = new();
 
         [field: SerializeField]
         public IniSerializedData Data { get; private set; }
@@ -21,12 +21,12 @@ namespace BeardPhantom.UnityINI
 
         #region Methods
 
-        public static MultiIniAsset Create(IEnumerable<IniAsset> iniAssets)
+        public static CompositeIniAsset Create(IEnumerable<IniAsset> iniAssets)
         {
-            var multiIniAsset = CreateInstance<MultiIniAsset>();
-            multiIniAsset.IniAssets.AddRange(iniAssets);
-            multiIniAsset.RegenerateData();
-            return multiIniAsset;
+            var compositeIniAsset = CreateInstance<CompositeIniAsset>();
+            compositeIniAsset.IniAssets.AddRange(iniAssets);
+            compositeIniAsset.RegenerateData();
+            return compositeIniAsset;
         }
 
         [ContextMenu("Regenerate INI Data")]

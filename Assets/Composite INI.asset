@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7e7b7d2a8f144c5b86d09f6a51debd4, type: 3}
-  m_Name: New Multi Ini Asset
+  m_Name: Composite INI
   m_EditorClassIdentifier: 
   <IniAssets>k__BackingField:
   - {fileID: -5475051401550479605, guid: 04fdd598230bb644cb7f22e242db8ff0, type: 3}

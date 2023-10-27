@@ -5,7 +5,6 @@ using IniParser.Parser;
 using System.IO;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = nameof(IniAsset))]
 public class IniAsset : ScriptableObject, ISerializationCallbackReceiver, IIniAsset
 {
     #region Properties
