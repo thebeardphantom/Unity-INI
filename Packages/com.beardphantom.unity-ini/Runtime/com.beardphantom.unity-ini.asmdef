@@ -1,0 +1,16 @@
+{
+    "name": "com.beardphantom.unity-ini",
+    "rootNamespace": "BeardPhantom.UnityINI",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "INIFileParser.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

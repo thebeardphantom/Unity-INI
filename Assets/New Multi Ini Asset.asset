@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7e7b7d2a8f144c5b86d09f6a51debd4, type: 3}
+  m_Name: New Multi Ini Asset
+  m_EditorClassIdentifier: 
+  <IniAssets>k__BackingField:
+  - {fileID: -5475051401550479605, guid: 04fdd598230bb644cb7f22e242db8ff0, type: 3}
+  - {fileID: -5475051401550479605, guid: 35aca93b44f34734284a65efc6464048, type: 3}
+  <Data>k__BackingField:
+    <Global>k__BackingField:
+      <Name>k__BackingField: 
+      <KeyValueCollection>k__BackingField:
+        <KeysToValues>k__BackingField:
+          <SerializedKeyValuePairs>k__BackingField:
+          - <Key>k__BackingField: Acbd
+            <Value>k__BackingField: 1234
+          - <Key>k__BackingField: Efgh
+            <Value>k__BackingField: 5678
+          - <Key>k__BackingField: TestKey
+            <Value>k__BackingField: TestValue1
+    <Sections>k__BackingField:
+      <Sections>k__BackingField:
+        <SerializedKeyValuePairs>k__BackingField:
+        - <Key>k__BackingField: Test
+          <Value>k__BackingField:
+            <Name>k__BackingField: Test
+            <KeyValueCollection>k__BackingField:
+              <KeysToValues>k__BackingField:
+                <SerializedKeyValuePairs>k__BackingField:
+                - <Key>k__BackingField: Abc
+                  <Value>k__BackingField: 123
+                - <Key>k__BackingField: TestKey
+                  <Value>k__BackingField: TestValue3
+        - <Key>k__BackingField: Test2
+          <Value>k__BackingField:
+            <Name>k__BackingField: Test2
+            <KeyValueCollection>k__BackingField:
+              <KeysToValues>k__BackingField:
+                <SerializedKeyValuePairs>k__BackingField:
+                - <Key>k__BackingField: Abc
+                  <Value>k__BackingField: 123
+                - <Key>k__BackingField: TestKey
+                  <Value>k__BackingField: TestValue3
+        - <Key>k__BackingField: SomeOtherSection
+          <Value>k__BackingField:
+            <Name>k__BackingField: SomeOtherSection
+            <KeyValueCollection>k__BackingField:
+              <KeysToValues>k__BackingField:
+                <SerializedKeyValuePairs>k__BackingField:
+                - <Key>k__BackingField: SomeOtherKey
+                  <Value>k__BackingField: SomeOtherValue
