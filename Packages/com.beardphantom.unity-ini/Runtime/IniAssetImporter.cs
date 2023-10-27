@@ -36,11 +36,7 @@ namespace BeardPhantom.UnityINI.Editor
         public override void OnImportAsset(AssetImportContext ctx)
         {
             var text = File.ReadAllText(ctx.assetPath);
-            var parserConfig = new IniParserConfiguration
-            {
-                AllowDuplicateKeys = AllowDuplicateKeys,
-                OverrideDuplicateKeys = DuplicateKeysUseLastValue
-            };
+            var parserConfig = GetParserConfig();
             var iniAsset = IniAsset.CreateFromString(text, parserConfig);
             ctx.AddObjectToAsset("MainAsset", iniAsset);
             ctx.SetMainObject(iniAsset);
@@ -56,6 +52,16 @@ namespace BeardPhantom.UnityINI.Editor
                 keyValueAsset.name = subassetName;
                 ctx.AddObjectToAsset(subassetName, keyValueAsset);
             }
+        }
+
+        public IniParserConfiguration GetParserConfig()
+        {
+            var parserConfig = new IniParserConfiguration
+            {
+                AllowDuplicateKeys = AllowDuplicateKeys,
+                OverrideDuplicateKeys = DuplicateKeysUseLastValue
+            };
+            return parserConfig;
         }
 
         #endregion
