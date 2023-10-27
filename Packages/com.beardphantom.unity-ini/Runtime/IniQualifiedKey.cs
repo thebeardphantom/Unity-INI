@@ -1,15 +1,28 @@
 ﻿using System;
+using UnityEngine;
 
 namespace BeardPhantom.UnityINI
 {
     [Serializable]
     public struct IniQualifiedKey
     {
-        #region Fields
+        #region Properties
 
-        public string Section;
+        [field: SerializeField]
+        public string Section { get; private set; }
 
-        public string Key;
+        [field: SerializeField]
+        public string Key { get; private set; }
+
+        #endregion
+
+        #region Constructors
+
+        public IniQualifiedKey(string section, string key)
+        {
+            Section = section;
+            Key = key;
+        }
 
         #endregion
 
@@ -18,7 +31,12 @@ namespace BeardPhantom.UnityINI
         /// <inheritdoc />
         public override string ToString()
         {
-            return string.IsNullOrWhiteSpace(Section) ? Key : $"{Section}/{Key}";
+            return ToString("/");
+        }
+
+        public string ToString(string separator)
+        {
+            return string.IsNullOrWhiteSpace(Section) ? Key : $"{Section}{separator}{Key}";
         }
 
         #endregion

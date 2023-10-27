@@ -4,9 +4,7 @@
     {
         #region Fields
 
-        public readonly string Section;
-
-        public readonly string Key;
+        public readonly IniQualifiedKey QualifiedKey;
 
         public readonly string Value;
 
@@ -14,10 +12,9 @@
 
         #region Constructors
 
-        public IniQualifiedKeyValue(string section, string key, string value)
+        public IniQualifiedKeyValue(IniQualifiedKey qualifiedKey, string value)
         {
-            Section = section;
-            Key = key;
+            QualifiedKey = qualifiedKey;
             Value = value;
         }
 

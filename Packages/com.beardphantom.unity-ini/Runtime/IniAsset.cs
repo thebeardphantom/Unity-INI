@@ -59,7 +59,7 @@ public class IniAsset : IniAssetBase, ISerializationCallbackReceiver
         IniParsedData = new IniData();
         foreach (var qualifiedKeyValue in Data.Global)
         {
-            IniParsedData.Global.AddKey(qualifiedKeyValue.Key, qualifiedKeyValue.Value);
+            IniParsedData.Global.AddKey(qualifiedKeyValue.QualifiedKey.Key, qualifiedKeyValue.Value);
         }
 
         foreach (var section in Data.Sections)
@@ -68,7 +68,7 @@ public class IniAsset : IniAssetBase, ISerializationCallbackReceiver
             var keyDataCollection = IniParsedData.Sections[section.Name];
             foreach (var qualifiedKeyValue in section)
             {
-                keyDataCollection.AddKey(qualifiedKeyValue.Key, qualifiedKeyValue.Value);
+                keyDataCollection.AddKey(qualifiedKeyValue.QualifiedKey.Key, qualifiedKeyValue.Value);
             }
         }
     }

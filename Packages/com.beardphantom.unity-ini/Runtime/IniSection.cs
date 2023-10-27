@@ -45,7 +45,7 @@ namespace BeardPhantom.UnityINI
         {
             foreach (var kvp in KeyValueCollection)
             {
-                yield return new IniQualifiedKeyValue(Name, kvp.Key, kvp.Value);
+                yield return new IniQualifiedKeyValue(new IniQualifiedKey(Name, kvp.Key), kvp.Value);
             }
         }
 

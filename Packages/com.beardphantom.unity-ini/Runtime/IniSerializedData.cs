@@ -39,7 +39,7 @@ namespace BeardPhantom.UnityINI
             get
             {
                 var value = this[qualifiedKey.Section][qualifiedKey.Key];
-                return new IniQualifiedKeyValue(qualifiedKey.Section, qualifiedKey.Key, value);
+                return new IniQualifiedKeyValue(new IniQualifiedKey(qualifiedKey.Section, qualifiedKey.Key), value);
             }
         }
 

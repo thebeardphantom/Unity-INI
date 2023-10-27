@@ -48,11 +48,9 @@ namespace BeardPhantom.UnityINI.Editor
             foreach (var keyValue in iniAsset.Data)
             {
                 var keyValueAsset = ScriptableObject.CreateInstance<IniKeyValueAsset>();
-                keyValueAsset.QualifiedKey = new IniQualifiedKey
-                {
-                    Key = keyValue.Key,
-                    Section = keyValue.Section
-                };
+                keyValueAsset.QualifiedKey = new IniQualifiedKey(
+                    keyValue.QualifiedKey.Section,
+                    keyValue.QualifiedKey.Key);
                 keyValueAsset.IniAsset = iniAsset;
                 var subassetName = keyValueAsset.QualifiedKey.ToString();
                 keyValueAsset.name = subassetName;
