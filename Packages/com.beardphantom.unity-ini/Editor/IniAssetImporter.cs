@@ -2,7 +2,6 @@
 using System.IO;
 using UnityEditor;
 using UnityEditor.AssetImporters;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace BeardPhantom.UnityINI.Editor
@@ -30,13 +29,7 @@ namespace BeardPhantom.UnityINI.Editor
             var iniTemplateAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(iniTemplatePath);
             var newAssetPath = "Assets/NewIni.ini";
             newAssetPath = AssetDatabase.GenerateUniqueAssetPath(newAssetPath);
-            File.WriteAllText(newAssetPath, iniTemplateAsset.text);
-            AssetDatabase.ImportAsset(newAssetPath);
-            
-            var newAsset = AssetDatabase.LoadAssetAtPath<IniAsset>(newAssetPath);
-            Selection.activeObject = newAsset;
-            EditorGUIUtility.PingObject(newAsset);
-            InternalEditorUtility.SetIsInspectorExpanded(newAsset, true);
+            ProjectWindowUtil.CreateAssetWithContent(newAssetPath, iniTemplateAsset.text);
         }
 
         /// <inheritdoc />
