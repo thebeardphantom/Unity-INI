@@ -5,12 +5,12 @@ using IniParser.Parser;
 using System.IO;
 using UnityEngine;
 
-public class IniAsset : ScriptableObject, ISerializationCallbackReceiver, IIniAsset
+public class IniAsset : IniAssetBase, ISerializationCallbackReceiver
 {
     #region Properties
 
     [field: SerializeField]
-    public IniSerializedData Data { get; private set; }
+    public override IniSerializedData Data { get; protected set; }
 
     internal IniData IniParsedData { get; private set; }
 

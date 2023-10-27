@@ -7,7 +7,7 @@ using UnityEngine.Pool;
 namespace BeardPhantom.UnityINI
 {
     [CreateAssetMenu(menuName = "INI/Composite INI")]
-    public class CompositeIniAsset : ScriptableObject, IIniAsset
+    public class CompositeIniAsset : IniAssetBase
     {
         #region Properties
 
@@ -15,7 +15,7 @@ namespace BeardPhantom.UnityINI
         public List<IniAsset> IniAssets { get; private set; } = new();
 
         [field: SerializeField]
-        public IniSerializedData Data { get; private set; }
+        public override IniSerializedData Data { get; protected set; }
 
         #endregion
 
