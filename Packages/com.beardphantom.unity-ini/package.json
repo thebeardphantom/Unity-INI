@@ -1,7 +1,7 @@
 {
   "name": "com.beardphantom.unity-ini",
   "displayName": "Unity INI",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "First-class INI file support for Unity.",
   "unity": "2021.3"
 }

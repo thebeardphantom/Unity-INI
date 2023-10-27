@@ -12,7 +12,7 @@ namespace BeardPhantom.UnityINI
         #region Properties
 
         [field: SerializeField]
-        private SerializedDictionary<string, IniSection> Sections { get; set; } = new();
+        private SerializedDictionary<string, IniSection> Sections { get; set; } = new(IniSectionCollectionComparer.Instance);
 
         #endregion
 

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace BeardPhantom.UnityINI
 {
     [Serializable]
-    public class IniSection : IEnumerable<IniQualifiedKeyValue>
+    public class IniSection : IEnumerable<IniQualifiedKeyValue>, IComparable<IniSection>
     {
         #region Properties
 
@@ -47,6 +47,17 @@ namespace BeardPhantom.UnityINI
             {
                 yield return new IniQualifiedKeyValue(new IniQualifiedKey(Name, kvp.Key), kvp.Value);
             }
+        }
+
+        /// <inheritdoc />
+        public int CompareTo(IniSection other)
+        {
+            if (ReferenceEquals(this, other))
+            {
+                return 0;
+            }
+
+            return ReferenceEquals(null, other) ? 1 : string.Compare(Name, other.Name, StringComparison.Ordinal);
         }
 
         /// <inheritdoc />

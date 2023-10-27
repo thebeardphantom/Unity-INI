@@ -13,48 +13,74 @@ MonoBehaviour:
   m_Name: Composite INI
   m_EditorClassIdentifier: 
   <IniAssets>k__BackingField:
-  - {fileID: -5475051401550479605, guid: 04fdd598230bb644cb7f22e242db8ff0, type: 3}
-  - {fileID: -5475051401550479605, guid: 35aca93b44f34734284a65efc6464048, type: 3}
+  - {fileID: -5475051401550479605, guid: 5b8551fb71f17b049a2e1cb7cd36dc70, type: 3}
+  - {fileID: -5475051401550479605, guid: 9ddf0df31436243468b1040c2022f56b, type: 3}
   <Data>k__BackingField:
     <Global>k__BackingField:
       <Name>k__BackingField: 
       <KeyValueCollection>k__BackingField:
         <KeysToValues>k__BackingField:
-          <SerializedKeyValuePairs>k__BackingField:
-          - <Key>k__BackingField: Acbd
-            <Value>k__BackingField: 1234
-          - <Key>k__BackingField: Efgh
-            <Value>k__BackingField: 5678
-          - <Key>k__BackingField: TestKey
-            <Value>k__BackingField: TestValue1
+          <SerializedKeyValuePairs>k__BackingField: []
     <Sections>k__BackingField:
       <Sections>k__BackingField:
         <SerializedKeyValuePairs>k__BackingField:
-        - <Key>k__BackingField: Test
+        - <Key>k__BackingField: AI
           <Value>k__BackingField:
-            <Name>k__BackingField: Test
+            <Name>k__BackingField: AI
             <KeyValueCollection>k__BackingField:
               <KeysToValues>k__BackingField:
                 <SerializedKeyValuePairs>k__BackingField:
-                - <Key>k__BackingField: Abc
-                  <Value>k__BackingField: 123
-                - <Key>k__BackingField: TestKey
-                  <Value>k__BackingField: TestValue3
-        - <Key>k__BackingField: Test2
+                - <Key>k__BackingField: Enabled
+                  <Value>k__BackingField: 1
+        - <Key>k__BackingField: App
           <Value>k__BackingField:
-            <Name>k__BackingField: Test2
+            <Name>k__BackingField: App
             <KeyValueCollection>k__BackingField:
               <KeysToValues>k__BackingField:
                 <SerializedKeyValuePairs>k__BackingField:
-                - <Key>k__BackingField: Abc
-                  <Value>k__BackingField: 123
-                - <Key>k__BackingField: TestKey
-                  <Value>k__BackingField: TestValue3
-        - <Key>k__BackingField: SomeOtherSection
+                - <Key>k__BackingField: FPSTarget
+                  <Value>k__BackingField: -1
+        - <Key>k__BackingField: Cheats
           <Value>k__BackingField:
-            <Name>k__BackingField: SomeOtherSection
+            <Name>k__BackingField: Cheats
             <KeyValueCollection>k__BackingField:
               <KeysToValues>k__BackingField:
                 <SerializedKeyValuePairs>k__BackingField:
-                - <Key>k__BackingField: SomeOtherKey
-                  <Value>k__BackingField: SomeOtherValue
+                - <Key>k__BackingField: Fullbright
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: GoldenGun
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: IgnoreAmmo
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: IgnoreCooldown
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: IgnoreLocks
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: InstantReload
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: PerfectStats
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: PlayerAimline
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: VisionMaskOff
+                  <Value>k__BackingField: 1
+        - <Key>k__BackingField: Locks
+          <Value>k__BackingField:
+            <Name>k__BackingField: Locks
+            <KeyValueCollection>k__BackingField:
+              <KeysToValues>k__BackingField:
+                <SerializedKeyValuePairs>k__BackingField:
+                - <Key>k__BackingField: ErrorCooldown
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: ErrorUssClass
+                  <Value>k__BackingField: lock-error-icon
+        - <Key>k__BackingField: Weapons
+          <Value>k__BackingField:
+            <Name>k__BackingField: Weapons
+            <KeyValueCollection>k__BackingField:
+              <KeysToValues>k__BackingField:
+                <SerializedKeyValuePairs>k__BackingField:
+                - <Key>k__BackingField: DebugRayDuration
+                  <Value>k__BackingField: 1
+                - <Key>k__BackingField: ImpactDecalRotationMax
+                  <Value>k__BackingField: 360
