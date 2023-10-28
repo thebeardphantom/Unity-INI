@@ -6,7 +6,7 @@ public class Test : MonoBehaviour
     #region Properties
 
     [field: SerializeField]
-    private IniAsset IniAsset { get; set; }
+    private IniAssetBase IniAsset { get; set; }
 
     [field: SerializeField]
     private IniKeyValueAsset KeyValueAsset { get; set; }

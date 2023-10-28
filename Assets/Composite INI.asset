@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e7b7d2a8f144c5b86d09f6a51debd4, type: 3}
   m_Name: Composite INI
   m_EditorClassIdentifier: 
-  <IniAssets>k__BackingField:
-  - {fileID: -5475051401550479605, guid: 5b8551fb71f17b049a2e1cb7cd36dc70, type: 3}
-  - {fileID: -5475051401550479605, guid: 9ddf0df31436243468b1040c2022f56b, type: 3}
   <Data>k__BackingField:
     <Global>k__BackingField:
       <Name>k__BackingField: 
@@ -84,3 +81,8 @@ MonoBehaviour:
                   <Value>k__BackingField: 1
                 - <Key>k__BackingField: ImpactDecalRotationMax
                   <Value>k__BackingField: 360
+  <Layers>k__BackingField:
+  - <Enabled>k__BackingField: 1
+    <Asset>k__BackingField: {fileID: -5475051401550479605, guid: 5b8551fb71f17b049a2e1cb7cd36dc70, type: 3}
+  - <Enabled>k__BackingField: 1
+    <Asset>k__BackingField: {fileID: -5475051401550479605, guid: 9ddf0df31436243468b1040c2022f56b, type: 3}

@@ -9,6 +9,11 @@ namespace BeardPhantom.UnityINI.Editor
     {
         #region Fields
 
+        private static readonly GUILayoutOption[] _guiLayoutOption =
+        {
+            GUILayout.ExpandHeight(true)
+        };
+
         private static bool _contentsFoldout;
 
         private string _contents;
@@ -25,7 +30,7 @@ namespace BeardPhantom.UnityINI.Editor
                 _contentsFoldout = EditorGUILayout.Foldout(_contentsFoldout, "File Contents", true);
                 if (_contentsFoldout)
                 {
-                    EditorGUILayout.TextArea(_contents, EditorStyles.textArea, GUILayout.ExpandHeight(true));
+                    EditorGUILayout.TextArea(_contents, EditorStyles.textArea, _guiLayoutOption);
                 }
             }
 
