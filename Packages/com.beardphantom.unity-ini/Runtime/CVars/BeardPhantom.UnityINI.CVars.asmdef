@@ -1,0 +1,16 @@
+{
+    "name": "BeardPhantom.UnityINI.CVars",
+    "rootNamespace": "BeardPhantom.UnityINI.CVars",
+    "references": [
+        "GUID:5f49f4ae14c373042917a9d7b2f72efd"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
