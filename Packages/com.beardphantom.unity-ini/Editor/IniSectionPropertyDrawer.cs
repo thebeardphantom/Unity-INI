@@ -50,16 +50,48 @@ namespace BeardPhantom.UnityINI.Editor
                 {
                     position.y += singleLineHeight;
                     var element = kvpStart.GetArrayElementAtIndex(i);
-                    
+
                     var key = element.FindPropertyRelative("<Key>k__BackingField");
                     var left = new Rect(position);
+                    left = EditorGUI.IndentedRect(left);
                     left.width /= 2f;
-                    EditorGUI.SelectableLabel(left, key.stringValue);
-                    
+                    GUI.Label(left, key.stringValue);
+
                     var value = element.FindPropertyRelative("<Value>k__BackingField");
                     var right = new Rect(left);
-                    right.x += left.width;
-                    EditorGUI.SelectableLabel(right, value.stringValue);
+                    right.x += right.width;
+                    GUI.Label(right, value.stringValue);
+
+                    var evt = Event.current;
+                    if (evt.type == EventType.ContextClick && position.Contains(evt.mousePosition))
+                    {
+                        var sectionName = property.FindPropertyRelative("<Name>k__BackingField").stringValue;
+                        var keyStringValue = key.stringValue;
+                        var valueStringValue = value.stringValue;
+                        var menu = new GenericMenu();
+                        menu.AddItem(
+                            new GUIContent("Copy Qualified Key"),
+                            false,
+                            () =>
+                            {
+                                GUIUtility.systemCopyBuffer = $"{sectionName}.{keyStringValue}";
+                            });
+                        menu.AddItem(
+                            new GUIContent("Copy Key"),
+                            false,
+                            () =>
+                            {
+                                GUIUtility.systemCopyBuffer = keyStringValue;
+                            });
+                        menu.AddItem(
+                            new GUIContent("Copy Value"),
+                            false,
+                            () =>
+                            {
+                                GUIUtility.systemCopyBuffer = valueStringValue;
+                            });
+                        menu.ShowAsContext();
+                    }
                 }
             }
         }
