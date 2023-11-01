@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7580374501911683559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f347cdb647aa4ebca7d98fd395e14e23, type: 3}
+  m_Name: Cheats/Fullbright
+  m_EditorClassIdentifier: 
+  <IniAsset>k__BackingField: {fileID: 11400000, guid: afec6a34215e83f4c9906687cf91683c, type: 2}
+  <QualifiedKey>k__BackingField:
+    <Section>k__BackingField: Cheats
+    <Key>k__BackingField: Fullbright
 --- !u!29 &1
 OcclusionCullingSettings:
   m_ObjectHideFlags: 0
@@ -330,8 +346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4972415f766c4c4caabeb6eb783838f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <IniAsset>k__BackingField: {fileID: -5475051401550479605, guid: 04fdd598230bb644cb7f22e242db8ff0, type: 3}
-  <KeyValueAsset>k__BackingField: {fileID: 3348639297665060183, guid: 04fdd598230bb644cb7f22e242db8ff0, type: 3}
+  <IniAsset>k__BackingField: {fileID: 11400000, guid: afec6a34215e83f4c9906687cf91683c, type: 2}
+  <KeyValueAsset>k__BackingField: {fileID: -7580374501911683559}
 --- !u!4 &1306198015
 Transform:
   m_ObjectHideFlags: 0

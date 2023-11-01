@@ -7,7 +7,7 @@ namespace BeardPhantom.UnityINI
         #region Properties
 
         [field: SerializeField]
-        public IniAsset IniAsset { get; set; }
+        public IniAssetBase IniAsset { get; set; }
 
         [field: SerializeField]
         public IniQualifiedKey QualifiedKey { get; set; }

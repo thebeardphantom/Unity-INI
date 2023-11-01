@@ -41,18 +41,6 @@ namespace BeardPhantom.UnityINI.Editor
             var iniAsset = IniAsset.CreateFromString(text, parserConfig);
             ctx.AddObjectToAsset("MainAsset", iniAsset);
             ctx.SetMainObject(iniAsset);
-
-            foreach (var keyValue in iniAsset.Data)
-            {
-                var keyValueAsset = ScriptableObject.CreateInstance<IniKeyValueAsset>();
-                keyValueAsset.QualifiedKey = new IniQualifiedKey(
-                    keyValue.QualifiedKey.Section,
-                    keyValue.QualifiedKey.Key);
-                keyValueAsset.IniAsset = iniAsset;
-                var subassetName = keyValueAsset.QualifiedKey.ToString();
-                keyValueAsset.name = subassetName;
-                ctx.AddObjectToAsset(subassetName, keyValueAsset);
-            }
         }
 
         public IniParserConfiguration GetParserConfig()

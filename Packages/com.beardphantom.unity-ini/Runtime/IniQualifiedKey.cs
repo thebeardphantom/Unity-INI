@@ -4,7 +4,7 @@ using UnityEngine;
 namespace BeardPhantom.UnityINI
 {
     [Serializable]
-    public struct IniQualifiedKey
+    public struct IniQualifiedKey : IEquatable<IniQualifiedKey>
     {
         #region Fields
 
@@ -43,6 +43,24 @@ namespace BeardPhantom.UnityINI
         public readonly string ToString(string separator)
         {
             return string.IsNullOrWhiteSpace(Section) ? Key : $"{Section}{separator}{Key}";
+        }
+
+        /// <inheritdoc />
+        public bool Equals(IniQualifiedKey other)
+        {
+            return Section == other.Section && Key == other.Key;
+        }
+
+        /// <inheritdoc />
+        public override bool Equals(object obj)
+        {
+            return obj is IniQualifiedKey other && Equals(other);
+        }
+
+        /// <inheritdoc />
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Section, Key);
         }
 
         #endregion
