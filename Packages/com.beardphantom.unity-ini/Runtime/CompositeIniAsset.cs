@@ -7,7 +7,7 @@ using UnityEngine;
 namespace BeardPhantom.UnityINI
 {
     [CreateAssetMenu(menuName = "INI/Composite INI")]
-    public class CompositeIniAsset : IniAssetBase, ISerializationCallbackReceiver
+    public class CompositeIniAsset : IniAssetBase
     {
         #region Types
 
@@ -21,6 +21,10 @@ namespace BeardPhantom.UnityINI
 
             [field: SerializeField]
             public IniAsset Asset { get; set; }
+
+            [field: SerializeField]
+            [field: HideInInspector]
+            public Hash128 CachedTextDataHash { get; set; }
 
             #endregion
 
@@ -50,25 +54,18 @@ namespace BeardPhantom.UnityINI
             var compositeIniAsset = CreateInstance<CompositeIniAsset>();
             compositeIniAsset.Layers.AddRange(
                 iniAssets.Select(
-                    i => new Layer
+                    l => new Layer
                     {
-                        Asset = i,
-                        Enabled = true
+                        Asset = l,
+                        Enabled = true,
+                        CachedTextDataHash = l.TextDataHash
                     }));
-            compositeIniAsset.RegenerateData();
+            compositeIniAsset.RebuildData();
             return compositeIniAsset;
         }
 
         /// <inheritdoc />
-        public void OnBeforeSerialize() { }
-
-        /// <inheritdoc />
-        public void OnAfterDeserialize()
-        {
-            RegenerateData();
-        }
-
-        private void RegenerateData()
+        internal override void RebuildData()
         {
             Data = new IniData();
             foreach (var layer in Layers)

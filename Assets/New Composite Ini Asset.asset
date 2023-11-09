@@ -12,4 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e7b7d2a8f144c5b86d09f6a51debd4, type: 3}
   m_Name: New Composite Ini Asset
   m_EditorClassIdentifier: 
-  <Layers>k__BackingField: []
+  <FoldoutStates>k__BackingField:
+    <RootFoldout>k__BackingField: 1
+    <States>k__BackingField:
+      <SerializedKeyValuePairs>k__BackingField:
+      - <Key>k__BackingField: Global
+        <Value>k__BackingField: 0
+      - <Key>k__BackingField: AI
+        <Value>k__BackingField: 1
+      - <Key>k__BackingField: App
+        <Value>k__BackingField: 1
+      - <Key>k__BackingField: Cheats
+        <Value>k__BackingField: 1
+      - <Key>k__BackingField: Locks
+        <Value>k__BackingField: 1
+      - <Key>k__BackingField: Weapons
+        <Value>k__BackingField: 1
+      - <Key>k__BackingField: "\u2605Global"
+        <Value>k__BackingField: 0
+      - <Key>k__BackingField: "Global\u2605"
+        <Value>k__BackingField: 0
+      - <Key>k__BackingField: "Global \u2605"
+        <Value>k__BackingField: 0
+      - <Key>k__BackingField: "\u2605 Global"
+        <Value>k__BackingField: 0
+  <Layers>k__BackingField:
+  - <Enabled>k__BackingField: 1
+    <Asset>k__BackingField: {fileID: -5475051401550479605, guid: 5b8551fb71f17b049a2e1cb7cd36dc70, type: 3}
+  - <Enabled>k__BackingField: 1
+    <Asset>k__BackingField: {fileID: -5475051401550479605, guid: 9ddf0df31436243468b1040c2022f56b, type: 3}

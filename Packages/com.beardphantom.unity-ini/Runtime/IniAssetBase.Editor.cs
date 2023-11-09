@@ -9,7 +9,17 @@ namespace BeardPhantom.UnityINI
         #region Properties
 
         [field: SerializeField]
+        [field: HideInInspector]
         internal FoldoutStates FoldoutStates { get; private set; } = new();
+
+        #endregion
+
+        #region Methods
+
+        private void OnValidate()
+        {
+            RebuildData();
+        }
 
         #endregion
     }

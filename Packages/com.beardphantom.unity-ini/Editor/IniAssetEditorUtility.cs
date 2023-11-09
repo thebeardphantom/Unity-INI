@@ -1,4 +1,5 @@
 ﻿using IniParser.Model;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -23,21 +24,21 @@ namespace BeardPhantom.UnityINI.Editor
             if (foldoutStates.RootFoldout)
             {
                 using var _ = new EditorGUI.IndentLevelScope();
-                DrawIniSection(asset.Data.Global, null, foldoutStates);
+                DrawKeyDataCollection(asset.Data.Global, null, foldoutStates);
 
-                foreach (var section in asset.Data.Sections)
+                foreach (var section in asset.Data.Sections.OrderBy(s => s.SectionName))
                 {
-                    DrawIniSection(section.Keys, section.SectionName, foldoutStates);
+                    DrawKeyDataCollection(section.Keys, section.SectionName, foldoutStates);
                 }
             }
 
             EditorGUILayout.EndFoldoutHeaderGroup();
         }
 
-        private static void DrawIniSection(KeyDataCollection section, string sectionName, FoldoutStates foldoutStates)
+        private static void DrawKeyDataCollection(KeyDataCollection collection, string sectionName, FoldoutStates foldoutStates)
         {
             var hasSectionName = !string.IsNullOrWhiteSpace(sectionName);
-            if (!foldoutStates.DrawFoldout(hasSectionName ? sectionName : "\u2605Global", section.Count > 0, true))
+            if (!foldoutStates.DrawFoldout(hasSectionName ? sectionName : "\u2605Global", collection.Count > 0, true))
             {
                 return;
             }
@@ -57,7 +58,7 @@ namespace BeardPhantom.UnityINI.Editor
             }
 
             using var _ = new EditorGUI.IndentLevelScope();
-            foreach (var keyData in section)
+            foreach (var keyData in collection.OrderBy(k => k.KeyName))
             {
                 using var horizontalScope = new EditorGUILayout.HorizontalScope();
                 var left = GUILayoutUtility.GetRect(

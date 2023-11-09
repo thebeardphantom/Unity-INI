@@ -5,11 +5,16 @@ using UnityEngine;
 
 namespace BeardPhantom.UnityINI
 {
-    public class IniAsset : IniAssetBase, ISerializationCallbackReceiver
+    public class IniAsset : IniAssetBase
     {
         #region Properties
 
         [field: SerializeField]
+        [field: HideInInspector]
+        internal Hash128 TextDataHash { get; private set; }
+
+        [field: SerializeField]
+        [field: HideInInspector]
         private string TextData { get; set; }
 
         [field: SerializeField]
@@ -42,21 +47,18 @@ namespace BeardPhantom.UnityINI
             return iniAsset;
         }
 
+        internal override void RebuildData()
+        {
+            Populate(TextData, ParserConfig);
+        }
+
         private void Populate(string iniDataString, SerializedIniParserConfig parserConfig)
         {
             var parser = new IniDataParser(parserConfig);
             ParserConfig = parserConfig;
             Data = string.IsNullOrWhiteSpace(TextData) ? new IniData() : parser.Parse(iniDataString);
             TextData = iniDataString;
-        }
-
-        /// <inheritdoc />
-        void ISerializationCallbackReceiver.OnBeforeSerialize() { }
-
-        /// <inheritdoc />
-        void ISerializationCallbackReceiver.OnAfterDeserialize()
-        {
-            Populate(TextData, ParserConfig);
+            TextDataHash = Hash128.Compute(TextData);
         }
 
         #endregion
