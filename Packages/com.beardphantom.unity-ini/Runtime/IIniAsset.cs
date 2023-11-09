@@ -1,10 +1,13 @@
-﻿using BeardPhantom.UnityINI;
+﻿using IniParser.Model;
 
-public interface IIniAsset
+namespace BeardPhantom.UnityINI
 {
-    #region Properties
+    public interface IIniAsset
+    {
+        #region Properties
 
-    IniSerializedData Data { get; }
+        IniData Data { get; }
 
-    #endregion
+        #endregion
+    }
 }

@@ -1,4 +1,4 @@
-﻿namespace BeardPhantom.CVars
+﻿namespace BeardPhantom.UnityINI.CVars
 {
     /// <summary>
     /// Because cvars represent multiple values at once (strings, ints, floats, and bools), its sometimes useful to indicate cvar set 

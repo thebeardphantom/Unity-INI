@@ -1,5 +1,4 @@
 ﻿#if UNITY_EDITOR
-using IniParser.Model.Configuration;
 using System.IO;
 using UnityEditor;
 using UnityEditor.AssetImporters;
@@ -8,15 +7,12 @@ using UnityEngine;
 namespace BeardPhantom.UnityINI.Editor
 {
     [ScriptedImporter(1, "ini")]
-    public class IniAssetImporter : ScriptedImporter
+    public class IniFileImporter : ScriptedImporter
     {
         #region Properties
 
         [field: SerializeField]
-        private bool AllowDuplicateKeys { get; set; } = true;
-
-        [field: SerializeField]
-        private bool DuplicateKeysUseLastValue { get; set; } = true;
+        private SerializedIniParserConfig ParserConfig { get; set; } = SerializedIniParserConfig.Default;
 
         #endregion
 
@@ -37,20 +33,9 @@ namespace BeardPhantom.UnityINI.Editor
         public override void OnImportAsset(AssetImportContext ctx)
         {
             var text = File.ReadAllText(ctx.assetPath);
-            var parserConfig = GetParserConfig();
-            var iniAsset = IniAsset.CreateFromString(text, parserConfig);
+            var iniAsset = IniAsset.CreateFromString(text, ParserConfig);
             ctx.AddObjectToAsset("MainAsset", iniAsset);
             ctx.SetMainObject(iniAsset);
-        }
-
-        public IniParserConfiguration GetParserConfig()
-        {
-            var parserConfig = new IniParserConfiguration
-            {
-                AllowDuplicateKeys = AllowDuplicateKeys,
-                OverrideDuplicateKeys = DuplicateKeysUseLastValue
-            };
-            return parserConfig;
         }
 
         #endregion

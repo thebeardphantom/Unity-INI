@@ -1,74 +1,64 @@
-using BeardPhantom.UnityINI;
 using IniParser.Model;
-using IniParser.Model.Configuration;
 using IniParser.Parser;
 using System.IO;
 using UnityEngine;
 
-public partial class IniAsset : IniAssetBase, ISerializationCallbackReceiver
+namespace BeardPhantom.UnityINI
 {
-    #region Properties
-
-    internal IniData IniParsedData { get; private set; }
-
-    #endregion
-
-    #region Methods
-
-    public static IniAsset CreateFromPath(string path, IniParserConfiguration parserConfig)
+    public class IniAsset : IniAssetBase, ISerializationCallbackReceiver
     {
-        var fileContents = File.ReadAllText(path);
-        return CreateFromString(fileContents, parserConfig);
-    }
+        #region Properties
 
-    public static IniAsset CreateFromString(string iniDataString, IniParserConfiguration parserConfig)
-    {
-        var iniAsset = CreateInstance<IniAsset>();
-        iniAsset.Populate(iniDataString, parserConfig);
-        return iniAsset;
-    }
+        [field: SerializeField]
+        private string TextData { get; set; }
 
-    public void Merge(IniAsset other)
-    {
-        IniParsedData.Merge(other.IniParsedData);
-        Data = new IniSerializedData(IniParsedData);
-    }
+        [field: SerializeField]
+        private SerializedIniParserConfig ParserConfig { get; set; } = SerializedIniParserConfig.Default;
 
-    private void Populate(string iniDataString, IniParserConfiguration parserConfig)
-    {
-        var parser = new IniDataParser(parserConfig);
-        IniParsedData = parser.Parse(iniDataString);
-        Data = new IniSerializedData(IniParsedData);
-    }
+        #endregion
 
-    /// <inheritdoc />
-    void ISerializationCallbackReceiver.OnBeforeSerialize() { }
+        #region Methods
 
-    /// <inheritdoc />
-    void ISerializationCallbackReceiver.OnAfterDeserialize()
-    {
-        if (IniParsedData != null)
+        public static IniAsset CreateFromPath(string path)
         {
-            // Only have to do this once
-            return;
+            return CreateFromPath(path, SerializedIniParserConfig.Default);
         }
 
-        IniParsedData = new IniData();
-        foreach (var qualifiedKeyValue in Data.Global)
+        public static IniAsset CreateFromString(string iniDataString)
         {
-            IniParsedData.Global.AddKey(qualifiedKeyValue.QualifiedKey.Key, qualifiedKeyValue.Value);
+            return CreateFromString(iniDataString, SerializedIniParserConfig.Default);
         }
 
-        foreach (var section in Data.Sections)
+        public static IniAsset CreateFromPath(string path, SerializedIniParserConfig parserConfig)
         {
-            IniParsedData.Sections.AddSection(section.Name);
-            var keyDataCollection = IniParsedData.Sections[section.Name];
-            foreach (var qualifiedKeyValue in section)
-            {
-                keyDataCollection.AddKey(qualifiedKeyValue.QualifiedKey.Key, qualifiedKeyValue.Value);
-            }
+            var fileContents = File.ReadAllText(path);
+            return CreateFromString(fileContents, parserConfig);
         }
+
+        public static IniAsset CreateFromString(string iniDataString, SerializedIniParserConfig parserConfig)
+        {
+            var iniAsset = CreateInstance<IniAsset>();
+            iniAsset.Populate(iniDataString, parserConfig);
+            return iniAsset;
+        }
+
+        private void Populate(string iniDataString, SerializedIniParserConfig parserConfig)
+        {
+            var parser = new IniDataParser(parserConfig);
+            ParserConfig = parserConfig;
+            Data = string.IsNullOrWhiteSpace(TextData) ? new IniData() : parser.Parse(iniDataString);
+            TextData = iniDataString;
+        }
+
+        /// <inheritdoc />
+        void ISerializationCallbackReceiver.OnBeforeSerialize() { }
+
+        /// <inheritdoc />
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            Populate(TextData, ParserConfig);
+        }
+
+        #endregion
     }
-
-    #endregion
 }

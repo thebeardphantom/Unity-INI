@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace BeardPhantom.CVars
+namespace BeardPhantom.UnityINI.CVars
 {
     /*
      * Manages current values for all cvars. CVars system is optimized for retrieving values of a single type,

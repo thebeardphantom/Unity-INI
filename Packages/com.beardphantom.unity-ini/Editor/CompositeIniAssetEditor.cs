@@ -1,17 +1,12 @@
 ﻿using UnityEditor;
+using UnityEngine;
 
 namespace BeardPhantom.UnityINI.Editor
 {
     [CustomEditor(typeof(CompositeIniAsset))]
     public class CompositeIniAssetEditor : UnityEditor.Editor
     {
-        #region Fields
-
-        private static readonly string[] _props =
-        {
-            "<Layers>k__BackingField",
-            "<Data>k__BackingField"
-        };
+        #region Properties
 
         #endregion
 
@@ -21,9 +16,9 @@ namespace BeardPhantom.UnityINI.Editor
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            DrawPropertiesExcluding(serializedObject, _props);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(_props[0]), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(_props[1]), true);
+            DrawDefaultInspector();
+            var asset = (CompositeIniAsset)target;
+            IniAssetEditorUtility.DrawIniData(asset);
             serializedObject.ApplyModifiedProperties();
         }
 

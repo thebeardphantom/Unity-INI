@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BeardPhantom.CVars
+namespace BeardPhantom.UnityINI.CVars
 {
     [Flags]
     public enum CVarSetFlags

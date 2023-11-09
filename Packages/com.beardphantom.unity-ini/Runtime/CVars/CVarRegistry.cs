@@ -1,11 +1,12 @@
-﻿using System;
+﻿using IniParser.Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace BeardPhantom.CVars
+namespace BeardPhantom.UnityINI.CVars
 {
     public partial class CVarRegistry : IEnumerable<CVar>
     {
@@ -41,12 +42,23 @@ namespace BeardPhantom.CVars
 
         public void LoadFromIni(IIniAsset iniAsset, bool log = true)
         {
-            foreach (var qualifiedKeyValue in iniAsset.Data)
+            void LoadIniSection(KeyDataCollection section, string sectionName)
             {
-                // ReSharper disable once PossiblyImpureMethodCallOnReadonlyVariable
-                var cvar = CVar.Create(qualifiedKeyValue.QualifiedKey.ToString("."));
-                cvar.ValueChanged += OnCvarValueChanged;
-                cvar.String = qualifiedKeyValue.Value;
+                var hasSectionName = !string.IsNullOrWhiteSpace(sectionName);
+                foreach (var keyData in section)
+                {
+                    var name = hasSectionName ? $"{sectionName}.{keyData.KeyName}" : keyData.KeyName;
+                    var cvar = CVar.Create(name);
+                    cvar.ValueChanged += OnCvarValueChanged;
+                    cvar.String = keyData.Value;
+                }
+            }
+
+            LoadIniSection(iniAsset.Data.Global, null);
+
+            foreach (var section in iniAsset.Data.Sections)
+            {
+                LoadIniSection(section.Keys, section.SectionName);
             }
 
             if (log)

@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace BeardPhantom.CVars
+namespace BeardPhantom.UnityINI.CVars
 {
     [InitializeOnLoad]
     public partial class CVarRegistry

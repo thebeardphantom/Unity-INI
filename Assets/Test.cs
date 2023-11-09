@@ -8,16 +8,13 @@ public class Test : MonoBehaviour
     [field: SerializeField]
     private IniAssetBase IniAsset { get; set; }
 
-    [field: SerializeField]
-    private IniKeyValueAsset KeyValueAsset { get; set; }
-
     #endregion
 
     #region Methods
 
     private void Start()
     {
-        Debug.Log(KeyValueAsset.Value);
+        // Debug.Log(KeyValueAsset.);
     }
 
     #endregion

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IniParser.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 namespace BeardPhantom.UnityINI
 {
     [CreateAssetMenu(menuName = "INI/Composite INI")]
-    public partial class CompositeIniAsset : IniAssetBase
+    public class CompositeIniAsset : IniAssetBase, ISerializationCallbackReceiver
     {
         #region Types
 
@@ -54,13 +55,31 @@ namespace BeardPhantom.UnityINI
                         Asset = i,
                         Enabled = true
                     }));
-            compositeIniAsset.RegenerateDataInEditor();
+            compositeIniAsset.RegenerateData();
             return compositeIniAsset;
         }
 
-        private void OnValidate()
+        /// <inheritdoc />
+        public void OnBeforeSerialize() { }
+
+        /// <inheritdoc />
+        public void OnAfterDeserialize()
         {
-            RegenerateDataInEditor();
+            RegenerateData();
+        }
+
+        private void RegenerateData()
+        {
+            Data = new IniData();
+            foreach (var layer in Layers)
+            {
+                if (!layer.Enabled || layer.Asset == null)
+                {
+                    continue;
+                }
+
+                Data.Merge(layer.Asset.Data);
+            }
         }
 
         #endregion

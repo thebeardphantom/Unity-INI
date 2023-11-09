@@ -1,4 +1,4 @@
-﻿namespace BeardPhantom.CVars
+﻿namespace BeardPhantom.UnityINI.CVars
 {
     public partial class CVar
     {

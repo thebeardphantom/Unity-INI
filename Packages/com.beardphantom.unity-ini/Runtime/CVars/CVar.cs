@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace BeardPhantom.CVars
+namespace BeardPhantom.UnityINI.CVars
 {
     public partial class CVar : IEquatable<CVar>
     {

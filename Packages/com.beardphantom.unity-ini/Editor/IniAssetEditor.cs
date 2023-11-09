@@ -20,11 +20,19 @@ namespace BeardPhantom.UnityINI.Editor
 
         #endregion
 
+        #region Properties
+
+        [field: SerializeField]
+        private FoldoutStates FoldoutStates { get; set; } = new();
+
+        #endregion
+
         #region Methods
 
         /// <inheritdoc />
         public override void OnInspectorGUI()
         {
+            DrawDefaultInspector();
             using (new EditorGUI.DisabledScope(false))
             {
                 _contentsFoldout = EditorGUILayout.Foldout(_contentsFoldout, "File Contents", true);
@@ -34,7 +42,8 @@ namespace BeardPhantom.UnityINI.Editor
                 }
             }
 
-            DrawPropertiesExcluding(serializedObject, "m_Script");
+            var asset = (IniAsset)target;
+            IniAssetEditorUtility.DrawIniData(asset);
         }
 
         private void OnEnable()

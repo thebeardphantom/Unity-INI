@@ -8,5 +8,6 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: ff33c235d2a543e5a9f0f4f609c1783a, type: 3}
-  <AllowDuplicateKeys>k__BackingField: 1
-  <DuplicateKeysUseLastValue>k__BackingField: 1
+  <ParserConfig>k__BackingField:
+    <AllowDuplicateKeys>k__BackingField: 1
+    <DuplicateKeysUseLastValue>k__BackingField: 1

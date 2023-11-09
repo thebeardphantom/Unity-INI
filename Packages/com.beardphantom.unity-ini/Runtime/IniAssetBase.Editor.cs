@@ -1,11 +1,17 @@
 ﻿#if UNITY_EDITOR
-public abstract partial class IniAssetBase : IIniEditorAsset
+using BeardPhantom.UnityINI.Editor;
+using UnityEngine;
+
+namespace BeardPhantom.UnityINI
 {
-    #region Methods
+    public abstract partial class IniAssetBase
+    {
+        #region Properties
 
-    /// <inheritdoc />
-    public abstract void RegenerateDataInEditor();
+        [field: SerializeField]
+        internal FoldoutStates FoldoutStates { get; private set; } = new();
 
-    #endregion
+        #endregion
+    }
 }
 #endif

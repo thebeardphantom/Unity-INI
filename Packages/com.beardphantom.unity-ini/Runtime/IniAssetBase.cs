@@ -1,12 +1,17 @@
-﻿using BeardPhantom.UnityINI;
+﻿using IniParser.Model;
 using UnityEngine;
 
-public abstract partial class IniAssetBase : ScriptableObject, IIniAsset
+namespace BeardPhantom.UnityINI
 {
-    #region Properties
+    public abstract partial class IniAssetBase : ScriptableObject, IIniAsset
+    {
+        #region Properties
 
-    [field: SerializeField]
-    public IniSerializedData Data { get; protected set; } = IniSerializedData.Default;
+        /// <inheritdoc />
+        public IniData Data { get; protected set; }
+        
+        
 
-    #endregion
+        #endregion
+    }
 }

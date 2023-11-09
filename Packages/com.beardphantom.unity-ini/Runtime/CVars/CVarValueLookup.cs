@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BeardPhantom.CVars
+namespace BeardPhantom.UnityINI.CVars
 {
     internal class CVarValueLookup<T>
     {
