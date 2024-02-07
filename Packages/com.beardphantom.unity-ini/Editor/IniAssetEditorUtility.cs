@@ -10,13 +10,14 @@ namespace BeardPhantom.UnityINI.Editor
         #region Fields
 
         private static GUIStyle _styleLeft;
+
         private static GUIStyle _styleRight;
 
         #endregion
 
         #region Methods
 
-        public static void DrawIniData(IniAssetBase asset)
+        public static void DrawIniData(CompositeIniAsset asset)
         {
             var foldoutStates = asset.FoldoutStates;
 

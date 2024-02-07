@@ -14,7 +14,7 @@
 
         #region Methods
 
-        public static CVar CreateInt(in string id, in int intValue)
+        public static CVar CreateInt(in string id, in int intValue = default)
         {
             var cvar = Create(id);
             cvar.Int = intValue;

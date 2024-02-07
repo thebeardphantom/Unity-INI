@@ -40,7 +40,7 @@ namespace BeardPhantom.UnityINI.CVars
 
         #region Methods
 
-        public void LoadFromIni(IIniAsset iniAsset, bool log = true)
+        public void LoadFromIni(CompositeIniAsset iniAsset, bool log = true)
         {
             void LoadIniSection(KeyDataCollection section, string sectionName)
             {

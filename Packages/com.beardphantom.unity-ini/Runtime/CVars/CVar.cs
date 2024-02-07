@@ -67,13 +67,6 @@ namespace BeardPhantom.UnityINI.CVars
             SetValues(defaults.String, defaults.Float, CVarValueType.String, DEFAULT_SET_FLAGS);
         }
 
-        public string GetShortValueString()
-        {
-            return LastSetValueType == CVarValueType.Bool
-                ? GetBoolString(Bool)
-                : String ?? STRING_NULL_FALLBACK;
-        }
-
         public string GetDebugPrintString()
         {
             return $"{Id} = \"{GetShortValueString()}\"";
@@ -121,6 +114,13 @@ namespace BeardPhantom.UnityINI.CVars
         public void ClearEventListeners()
         {
             ValueChanged = null;
+        }
+
+        private string GetShortValueString()
+        {
+            return LastSetValueType == CVarValueType.Bool
+                ? GetBoolString(Bool)
+                : String ?? STRING_NULL_FALLBACK;
         }
 
         private void SetValues(

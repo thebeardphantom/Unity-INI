@@ -1,45 +1,56 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 
 namespace BeardPhantom.UnityINI.Editor
 {
     [CustomEditor(typeof(CompositeIniAsset))]
     public class CompositeIniAssetEditor : UnityEditor.Editor
     {
-        #region Methods
+        #region Fields
 
-        private static DateTime TimeStampToDateTime(ulong assetTimeStamp)
-        {
-            var time = new DateTime((long)assetTimeStamp);
-            time = time.ToLocalTime();
-            return time;
-        }
+        private CompositeIniAsset _asset;
+
+        #endregion
+
+        #region Methods
 
         /// <inheritdoc />
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
-            DrawDefaultInspector();
-
-            // Detect data changes and rebuild
-            var asset = (CompositeIniAsset)target;
-            foreach (var layer in asset.Layers)
+            if (DrawDefaultInspector())
             {
-                if (layer.Enabled && layer.Asset != null && layer.Asset.TextDataHash != layer.CachedTextDataHash)
-                {
-                    asset.RebuildData();
-                    break;
-                }
+                RebuildData();
             }
 
-            IniAssetEditorUtility.DrawIniData(asset);
-            serializedObject.ApplyModifiedProperties();
+            IniAssetEditorUtility.DrawIniData(_asset);
         }
 
         /// <inheritdoc />
         protected override bool ShouldHideOpenButton()
         {
             return true;
+        }
+
+        private void OnEnable()
+        {
+            AssetImportEvents.AssetsImported -= OnAssetsImported;
+            AssetImportEvents.AssetsImported += OnAssetsImported;
+            _asset = (CompositeIniAsset)target;
+            RebuildData();
+        }
+
+        private void OnDisable()
+        {
+            AssetImportEvents.AssetsImported -= OnAssetsImported;
+        }
+
+        private void RebuildData()
+        {
+            _asset.RebuildData();
+        }
+
+        private void OnAssetsImported()
+        {
+            RebuildData();
         }
 
         #endregion

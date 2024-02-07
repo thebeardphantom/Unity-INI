@@ -16,7 +16,7 @@ namespace BeardPhantom.UnityINI.CVars
 
         #region Methods
 
-        public static CVar CreateFloat(in string id, in float floatValue)
+        public static CVar CreateFloat(in string id, in float floatValue = default)
         {
             var cvar = Create(id);
             cvar.Float = floatValue;

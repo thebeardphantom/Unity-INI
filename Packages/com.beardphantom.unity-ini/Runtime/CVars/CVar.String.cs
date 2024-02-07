@@ -14,7 +14,7 @@
 
         #region Methods
 
-        public static CVar CreateString(in string id, in string stringValue)
+        public static CVar CreateString(in string id, in string stringValue = default)
         {
             var cvar = Create(id);
             cvar.String = stringValue;

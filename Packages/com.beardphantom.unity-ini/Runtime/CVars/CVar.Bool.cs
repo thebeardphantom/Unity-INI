@@ -32,7 +32,7 @@
 
         #region Methods
 
-        public static CVar CreateBool(in string id, in bool value)
+        public static CVar CreateBool(in string id, in bool value = default)
         {
             var cvar = Create(id);
             cvar.Bool = value;

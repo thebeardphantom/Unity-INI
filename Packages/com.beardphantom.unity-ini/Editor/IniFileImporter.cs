@@ -1,5 +1,4 @@
-﻿#if UNITY_EDITOR
-using System.IO;
+﻿using System.IO;
 using UnityEditor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
@@ -9,13 +8,6 @@ namespace BeardPhantom.UnityINI.Editor
     [ScriptedImporter(1, "ini")]
     public class IniFileImporter : ScriptedImporter
     {
-        #region Properties
-
-        [field: SerializeField]
-        private SerializedIniParserConfig ParserConfig { get; set; } = SerializedIniParserConfig.Default;
-
-        #endregion
-
         #region Methods
 
         [MenuItem("Assets/Create/INI/INI File", priority = -100)]
@@ -33,12 +25,11 @@ namespace BeardPhantom.UnityINI.Editor
         public override void OnImportAsset(AssetImportContext ctx)
         {
             var text = File.ReadAllText(ctx.assetPath);
-            var iniAsset = IniAsset.CreateFromString(text, ParserConfig);
-            ctx.AddObjectToAsset("MainAsset", iniAsset);
-            ctx.SetMainObject(iniAsset);
+            var textAsset = new TextAsset(text);
+            ctx.AddObjectToAsset("MainAsset", textAsset);
+            ctx.SetMainObject(textAsset);
         }
 
         #endregion
     }
 }
-#endif
